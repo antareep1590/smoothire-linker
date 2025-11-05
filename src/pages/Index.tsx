@@ -8,6 +8,7 @@ import { DuplicateDetection } from "@/components/DuplicateDetection";
 import { MergeChecklist } from "@/components/MergeChecklist";
 import { NotesSection } from "@/components/NotesSection";
 import { ActionButtons } from "@/components/ActionButtons";
+import { PreviousApplications } from "@/components/PreviousApplications";
 import { Sparkles, Building2, Briefcase, Mail, GraduationCap } from "lucide-react";
 
 const mockProfileData = {
@@ -20,6 +21,30 @@ const mockProfileData = {
   avatarUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=John",
   existsInSystem: true,
 };
+
+const mockApplications = [
+  {
+    id: "1",
+    company: "TechStart Inc.",
+    role: "Senior Full Stack Developer",
+    lastUpdate: "2 days ago",
+    status: "Interviewing" as const,
+  },
+  {
+    id: "2",
+    company: "Innovation Labs",
+    role: "Lead Software Engineer",
+    lastUpdate: "1 week ago",
+    status: "Applied" as const,
+  },
+  {
+    id: "3",
+    company: "Digital Solutions Co.",
+    role: "Software Architect",
+    lastUpdate: "2 weeks ago",
+    status: "Rejected" as const,
+  },
+];
 
 const Index = () => {
   const [isPanelOpen, setIsPanelOpen] = useState(false);
@@ -125,9 +150,11 @@ const Index = () => {
         
         <MergeChecklist items={mergeItems} onToggle={handleToggleMergeItem} />
         
+        <PreviousApplications applications={mockApplications} />
+        
         <NotesSection />
         
-        <ActionButtons 
+        <ActionButtons
           isExistingCandidate={mockProfileData.existsInSystem}
         />
       </ExtensionPanel>

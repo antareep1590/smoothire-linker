@@ -14,8 +14,8 @@ export const DuplicateDetection = ({
   if (!hasDuplicate) return null;
 
   return (
-    <Alert className="bg-accent/5 border-accent/20">
-      <AlertCircle className="h-4 w-4 text-accent" />
+    <Alert className="bg-muted border-border">
+      <AlertCircle className="h-4 w-4 text-muted-foreground" />
       <AlertDescription className="flex items-center justify-between gap-4">
         <span className="text-sm text-foreground">
           Possible duplicate found in Smoothire database
@@ -24,7 +24,7 @@ export const DuplicateDetection = ({
           variant="outline" 
           size="sm"
           onClick={onViewProfile}
-          className="shrink-0 border-accent text-accent hover:bg-accent/10"
+          className="shrink-0"
         >
           View Profile
         </Button>

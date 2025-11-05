@@ -27,8 +27,8 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background flex items-center justify-center p-8">
       <div className="text-center space-y-6 max-w-2xl">
-        <div className="inline-flex items-center justify-center w-16 h-16 bg-primary rounded-2xl mb-4">
-          <span className="text-primary-foreground font-bold text-2xl">S</span>
+        <div className="inline-flex items-center justify-center w-16 h-16 bg-foreground rounded-xl mb-4">
+          <span className="text-background font-bold text-2xl">S</span>
         </div>
         
         <h1 className="text-4xl font-bold text-foreground">
@@ -43,7 +43,7 @@ const Index = () => {
           <Button 
             onClick={() => setIsPanelOpen(true)}
             size="lg"
-            className="bg-primary hover:bg-primary/90 text-primary-foreground font-medium"
+            className="bg-accent hover:bg-accent/90 text-accent-foreground font-medium"
           >
             <Sparkles className="w-5 h-5 mr-2" />
             Open Extension Panel

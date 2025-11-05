@@ -8,39 +8,39 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Smoothire Brand Colors */
-    --background: 220 13% 97%; /* #F8F8F8 */
-    --foreground: 240 10% 10%; /* #18181B */
+    /* Smoothire Brand Colors - Neutral & Minimal */
+    --background: 0 0% 98%; /* Very light gray */
+    --foreground: 0 0% 10%; /* Dark gray/black for text */
 
-    --card: 0 0% 100%; /* #FFFFFF */
-    --card-foreground: 240 10% 10%;
+    --card: 0 0% 100%; /* Pure white */
+    --card-foreground: 0 0% 10%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 10%;
+    --popover-foreground: 0 0% 10%;
 
-    --primary: 142 71% 45%; /* #22C55E - Smoothire Green */
+    --primary: 0 0% 10%; /* Dark gray for primary elements */
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 220 13% 96%; /* #F4F4F5 - Subtle BG */
-    --secondary-foreground: 240 10% 10%;
+    --secondary: 0 0% 96%; /* Light gray backgrounds */
+    --secondary-foreground: 0 0% 10%;
 
-    --muted: 220 13% 91%; /* #E5E7EB */
-    --muted-foreground: 220 9% 46%; /* #737373 */
+    --muted: 0 0% 96%; /* Subtle backgrounds */
+    --muted-foreground: 0 0% 55%; /* Medium gray text */
 
-    --accent: 217 91% 60%; /* #2563EB - Info/Link Blue */
+    --accent: 0 0% 60%; /* Neutral gray for buttons */
     --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 84% 60%; /* #EF4444 */
+    --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --success: 142 71% 45%; /* #22C55E */
-    --success-light: 142 76% 93%; /* #DCFCE7 - Chip/Selected */
+    --success: 142 71% 45%; /* Green only for success indicators */
+    --success-light: 142 76% 93%; /* Light green for badges */
 
-    --border: 220 13% 91%; /* #E5E7EB */
-    --input: 220 13% 91%;
-    --ring: 142 71% 45%;
+    --border: 0 0% 91%; /* Light gray borders */
+    --input: 0 0% 91%;
+    --ring: 0 0% 60%;
 
-    --radius: 0.75rem;
+    --radius: 0.5rem;
 
     --sidebar-background: 0 0% 98%;
 
@@ -125,10 +125,10 @@ All colors MUST be HSL.
   }
 
   .chip {
-    @apply inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-medium bg-[hsl(var(--success-light))] text-foreground transition-colors;
+    @apply inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium bg-secondary text-muted-foreground border border-border;
   }
 
   .ai-badge {
-    @apply inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-xs font-medium bg-accent/10 text-accent border border-accent/20;
+    @apply inline-flex items-center gap-1 px-2 py-1 rounded-md text-xs font-medium bg-success-light text-success border border-success/20;
   }
 }

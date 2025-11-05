@@ -50,10 +50,10 @@ export const ActionButtons = ({
 
   return (
     <>
-      <div className="sticky bottom-0 bg-background border-t border-border p-6 -mx-6 -mb-6 space-y-3">
+      <div className="sticky bottom-0 bg-card border-t border-border p-6 -mx-6 -mb-6 space-y-3">
         <Button 
           onClick={() => setShowConfirmDialog(true)}
-          className="w-full h-12 bg-primary hover:bg-primary/90 text-primary-foreground font-medium"
+          className="w-full h-12 bg-accent hover:bg-accent/90 text-accent-foreground font-medium"
           size="lg"
         >
           <Check className="w-5 h-5 mr-2" />
@@ -86,7 +86,7 @@ export const ActionButtons = ({
             <AlertDialogCancel>Cancel</AlertDialogCancel>
             <AlertDialogAction 
               onClick={handleConfirm}
-              className="bg-primary hover:bg-primary/90"
+              className="bg-accent hover:bg-accent/90"
             >
               Confirm
             </AlertDialogAction>

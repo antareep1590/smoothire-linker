@@ -8,7 +8,7 @@ import { DuplicateDetection } from "@/components/DuplicateDetection";
 import { MergeChecklist } from "@/components/MergeChecklist";
 import { NotesSection } from "@/components/NotesSection";
 import { ActionButtons } from "@/components/ActionButtons";
-import { Sparkles } from "lucide-react";
+import { Sparkles, Building2, Briefcase, Mail, GraduationCap } from "lucide-react";
 
 const mockProfileData = {
   name: "John Doe",
@@ -23,6 +23,44 @@ const mockProfileData = {
 
 const Index = () => {
   const [isPanelOpen, setIsPanelOpen] = useState(false);
+  const [mergeItems, setMergeItems] = useState([
+    {
+      id: "company",
+      label: "Current Company",
+      value: "Tech Corp Inc.",
+      icon: Building2,
+      checked: true,
+    },
+    {
+      id: "title",
+      label: "Job Title",
+      value: "Senior Software Engineer",
+      icon: Briefcase,
+      checked: true,
+    },
+    {
+      id: "email",
+      label: "Email Address",
+      value: "john.doe@example.com",
+      icon: Mail,
+      checked: true,
+    },
+    {
+      id: "education",
+      label: "Education",
+      value: "MSc Computer Science, Stanford",
+      icon: GraduationCap,
+      checked: true,
+    },
+  ]);
+
+  const handleToggleMergeItem = (id: string) => {
+    setMergeItems(items =>
+      items.map(item =>
+        item.id === id ? { ...item, checked: !item.checked } : item
+      )
+    );
+  };
 
   return (
     <div className="min-h-screen bg-background flex items-center justify-center p-8">
@@ -85,7 +123,7 @@ const Index = () => {
         
         <SkillsSection />
         
-        <MergeChecklist />
+        <MergeChecklist items={mergeItems} onToggle={handleToggleMergeItem} />
         
         <NotesSection />
         

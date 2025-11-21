@@ -1,8 +1,19 @@
 import { useState } from "react";
-import { X, Plus, Sparkles } from "lucide-react";
+import { X, Plus, Sparkles, Trash2 } from "lucide-react";
 import { Label } from "./ui/label";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "./ui/alert-dialog";
 
 interface SkillsSectionProps {
   aiSuggestedSkills?: string[];
@@ -27,6 +38,11 @@ export const SkillsSection = ({
     const updated = skills.filter(skill => skill !== skillToRemove);
     setSkills(updated);
     onChange?.(updated);
+  };
+
+  const clearAllSkills = () => {
+    setSkills([]);
+    onChange?.([]);
   };
 
   const addSkill = () => {
@@ -56,26 +72,58 @@ export const SkillsSection = ({
             Skills mapped by AI from your org settings; edit as needed
           </p>
         </div>
-        <span className="ai-badge shrink-0">
-          <Sparkles className="w-3 h-3" />
-          AI
-        </span>
+        <div className="flex items-center gap-2">
+          <span className="ai-badge shrink-0">
+            <Sparkles className="w-3 h-3" />
+            AI
+          </span>
+          {skills.length > 0 && (
+            <AlertDialog>
+              <AlertDialogTrigger asChild>
+                <Button variant="ghost" size="sm" className="h-7 px-2 text-xs">
+                  <Trash2 className="w-3 h-3 mr-1" />
+                  Clear All
+                </Button>
+              </AlertDialogTrigger>
+              <AlertDialogContent className="bg-card">
+                <AlertDialogHeader>
+                  <AlertDialogTitle>Clear all skills?</AlertDialogTitle>
+                  <AlertDialogDescription>
+                    This will remove all selected skills for this candidate. This action cannot be undone.
+                  </AlertDialogDescription>
+                </AlertDialogHeader>
+                <AlertDialogFooter>
+                  <AlertDialogCancel>Cancel</AlertDialogCancel>
+                  <AlertDialogAction onClick={clearAllSkills} className="bg-destructive hover:bg-destructive/90">
+                    Clear All
+                  </AlertDialogAction>
+                </AlertDialogFooter>
+              </AlertDialogContent>
+            </AlertDialog>
+          )}
+        </div>
       </div>
 
-      <div className="flex flex-wrap gap-2">
-        {skills.map((skill) => (
-          <span key={skill} className="chip group">
-            {skill}
-            <button
-              onClick={() => removeSkill(skill)}
-              className="opacity-60 hover:opacity-100 transition-opacity"
-              aria-label={`Remove ${skill}`}
-            >
-              <X className="w-3 h-3" />
-            </button>
-          </span>
-        ))}
-      </div>
+      {skills.length > 0 ? (
+        <div className="flex flex-wrap gap-2">
+          {skills.map((skill) => (
+            <span key={skill} className="chip group">
+              {skill}
+              <button
+                onClick={() => removeSkill(skill)}
+                className="opacity-60 hover:opacity-100 transition-opacity"
+                aria-label={`Remove ${skill}`}
+              >
+                <X className="w-3 h-3" />
+              </button>
+            </span>
+          ))}
+        </div>
+      ) : (
+        <div className="text-sm text-muted-foreground py-4 text-center">
+          No skills selected
+        </div>
+      )}
 
       <div className="flex gap-2">
         <Input

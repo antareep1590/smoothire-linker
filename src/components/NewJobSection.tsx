@@ -14,13 +14,13 @@ interface NewJobSectionProps {
 
 export const NewJobSection = ({ data }: NewJobSectionProps) => {
   return (
-    <div className="bg-card rounded-xl border border-border p-6 space-y-4">
+    <div className="space-y-4">
       <div>
         <Label className="text-sm font-medium text-foreground">
           New Job
         </Label>
         <p className="text-xs text-muted-foreground mt-1">
-          Latest position information from LinkedIn
+          Latest position information
         </p>
       </div>
 

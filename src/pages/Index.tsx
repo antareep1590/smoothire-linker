@@ -9,11 +9,9 @@ import { MergeChecklist } from "@/components/MergeChecklist";
 import { NotesSection } from "@/components/NotesSection";
 import { ActionButtons } from "@/components/ActionButtons";
 import { PreviousApplications } from "@/components/PreviousApplications";
-import { NewJobSection } from "@/components/NewJobSection";
-import { PreviousJobSection } from "@/components/PreviousJobSection";
-import { EducationSection } from "@/components/EducationSection";
+import { LinkedInInfoSection } from "@/components/LinkedInInfoSection";
 import { FollowupsSection } from "@/components/FollowupsSection";
-import { Sparkles, Building2, Briefcase, Mail, GraduationCap } from "lucide-react";
+import { Sparkles, Mail } from "lucide-react";
 
 const mockProfileData = {
   name: "John Doe",
@@ -82,31 +80,10 @@ const Index = () => {
   const [isPanelOpen, setIsPanelOpen] = useState(false);
   const [mergeItems, setMergeItems] = useState([
     {
-      id: "company",
-      label: "Current Company",
-      value: "Tech Corp Inc.",
-      icon: Building2,
-      checked: true,
-    },
-    {
-      id: "title",
-      label: "Job Title",
-      value: "Senior Software Engineer",
-      icon: Briefcase,
-      checked: true,
-    },
-    {
       id: "email",
       label: "Email Address",
       value: "john.doe@example.com",
       icon: Mail,
-      checked: true,
-    },
-    {
-      id: "education",
-      label: "Education",
-      value: "MSc Computer Science, Stanford",
-      icon: GraduationCap,
       checked: true,
     },
   ]);
@@ -174,11 +151,11 @@ const Index = () => {
           onViewProfile={() => console.log("View profile")}
         />
 
-        <NewJobSection data={mockNewJob} />
-
-        <PreviousJobSection data={mockPreviousJob} />
-
-        <EducationSection entries={mockEducation} />
+        <LinkedInInfoSection 
+          newJobData={mockNewJob}
+          previousJobData={mockPreviousJob}
+          educationEntries={mockEducation}
+        />
         
         <JobFunctionField 
           aiSuggestion="Software Engineering"

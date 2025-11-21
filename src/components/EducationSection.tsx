@@ -16,13 +16,13 @@ export const EducationSection = ({ entries }: EducationSectionProps) => {
   const latestEntry = entries.find(e => e.isLatest) || entries[0];
 
   return (
-    <div className="bg-card rounded-xl border border-border p-6 space-y-4">
+    <div className="space-y-4">
       <div>
         <Label className="text-sm font-medium text-foreground">
           Education
         </Label>
         <p className="text-xs text-muted-foreground mt-1">
-          Academic qualifications from LinkedIn
+          Academic qualifications
         </p>
       </div>
 

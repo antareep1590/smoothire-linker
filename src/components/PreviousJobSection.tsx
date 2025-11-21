@@ -16,7 +16,7 @@ export const PreviousJobSection = ({ data }: PreviousJobSectionProps) => {
   if (!data) return null;
 
   return (
-    <div className="bg-card rounded-xl border border-border p-6 space-y-4">
+    <div className="space-y-4">
       <div>
         <Label className="text-sm font-medium text-foreground">
           Previous Company End Date

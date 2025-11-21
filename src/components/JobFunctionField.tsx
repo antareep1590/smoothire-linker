@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { Sparkles, ChevronDown } from "lucide-react";
+import { Sparkles, ChevronDown, AlertTriangle } from "lucide-react";
 import { Label } from "./ui/label";
+import { Alert, AlertDescription } from "./ui/alert";
 import {
   Select,
   SelectContent,
@@ -26,12 +27,14 @@ interface JobFunctionFieldProps {
   aiSuggestion?: string;
   value?: string;
   onChange?: (value: string) => void;
+  expectedFunction?: string;
 }
 
 export const JobFunctionField = ({ 
   aiSuggestion = "Software Engineering", 
   value,
-  onChange 
+  onChange,
+  expectedFunction
 }: JobFunctionFieldProps) => {
   const [selectedFunction, setSelectedFunction] = useState(value || aiSuggestion);
 
@@ -39,6 +42,8 @@ export const JobFunctionField = ({
     setSelectedFunction(newValue);
     onChange?.(newValue);
   };
+
+  const hasMismatch = expectedFunction && selectedFunction !== expectedFunction;
 
   return (
     <div className="bg-card rounded-xl border border-border p-6 space-y-4">
@@ -74,6 +79,15 @@ export const JobFunctionField = ({
         <p className="text-xs text-muted-foreground">
           AI suggested: <span className="text-accent">{aiSuggestion}</span>
         </p>
+      )}
+
+      {hasMismatch && (
+        <Alert variant="destructive" className="bg-destructive/10 border-destructive/50">
+          <AlertTriangle className="h-4 w-4" />
+          <AlertDescription className="text-sm">
+            Warning: Job Function does not match with our system. Expected: <strong>{expectedFunction}</strong>. Please review.
+          </AlertDescription>
+        </Alert>
       )}
     </div>
   );

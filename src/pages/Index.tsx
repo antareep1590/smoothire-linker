@@ -9,6 +9,10 @@ import { MergeChecklist } from "@/components/MergeChecklist";
 import { NotesSection } from "@/components/NotesSection";
 import { ActionButtons } from "@/components/ActionButtons";
 import { PreviousApplications } from "@/components/PreviousApplications";
+import { NewJobSection } from "@/components/NewJobSection";
+import { PreviousJobSection } from "@/components/PreviousJobSection";
+import { EducationSection } from "@/components/EducationSection";
+import { FollowupsSection } from "@/components/FollowupsSection";
 import { Sparkles, Building2, Briefcase, Mail, GraduationCap } from "lucide-react";
 
 const mockProfileData = {
@@ -43,6 +47,34 @@ const mockApplications = [
     role: "Software Architect",
     lastUpdate: "2 weeks ago",
     status: "Rejected" as const,
+  },
+];
+
+const mockNewJob = {
+  companyName: "Tech Corp Inc.",
+  dateOfJoining: "15-03-2022",
+  location: "San Francisco, CA",
+  jobTitle: "Senior Software Engineer",
+};
+
+const mockPreviousJob = {
+  companyName: "Digital Innovations Ltd.",
+  endDate: "28-02-2022",
+  location: "New York, NY",
+  jobTitle: "Software Engineer",
+};
+
+const mockEducation = [
+  {
+    institution: "Stanford University",
+    degree: "MSc Computer Science",
+    endDate: "2020",
+    isLatest: true,
+  },
+  {
+    institution: "UC Berkeley",
+    degree: "BSc Computer Engineering",
+    endDate: "2018",
   },
 ];
 
@@ -141,9 +173,16 @@ const Index = () => {
           hasDuplicate={mockProfileData.existsInSystem}
           onViewProfile={() => console.log("View profile")}
         />
+
+        <NewJobSection data={mockNewJob} />
+
+        <PreviousJobSection data={mockPreviousJob} />
+
+        <EducationSection entries={mockEducation} />
         
         <JobFunctionField 
           aiSuggestion="Software Engineering"
+          expectedFunction="Product Management"
         />
         
         <SkillsSection />
@@ -151,6 +190,8 @@ const Index = () => {
         <MergeChecklist items={mergeItems} onToggle={handleToggleMergeItem} />
         
         <PreviousApplications applications={mockApplications} />
+
+        <FollowupsSection />
         
         <NotesSection />
         

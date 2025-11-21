@@ -58,16 +58,6 @@ export const ProfileCard = ({ data }: ProfileCardProps) => {
             <span className="text-foreground">{data.email}</span>
           </div>
         )}
-        
-        <a 
-          href={data.linkedinUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center gap-2 text-sm text-accent hover:underline w-fit"
-        >
-          <ExternalLink className="w-4 h-4" />
-          <span>View LinkedIn Profile</span>
-        </a>
       </div>
     </div>
   );
